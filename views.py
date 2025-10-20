@@ -87,6 +87,13 @@ class UserDetailAPI(MethodView):
         except:
             return {"Error": "No es posible borrarlo"}
 
+class UserDetailAPI(MethodView):
+    @jwt_required()
+    @roles_required("moderador")
+    def get(self, id):
+        user = User.query.get_or_404(id)
+        return UserSchema().dump(user), 200
+    
 
 class UserRegisterAPI(MethodView):
     def post(self):
