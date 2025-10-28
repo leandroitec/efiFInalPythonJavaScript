@@ -11,7 +11,7 @@ from passlib.hash import bcrypt
 
 from app import db
 from models import User, UserCredentials
-from api.schemas import UserSchema, RegisterSchema, LoginSchema
+from schemas import UserSchema, RegisterSchema, LoginSchema
 
 from datetime import datetime, timedelta
 from functools import wraps
@@ -143,3 +143,4 @@ class AuthLoginAPI(MethodView):
             expires_delta=datetime.now()+timedelta(minutes=10)
         )
         return {"access_token": token}, 200
+    

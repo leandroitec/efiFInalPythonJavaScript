@@ -6,21 +6,13 @@ db = SQLAlchemy()
 
 
 class User(db.Model):
-    __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(
-        db.String(100), nullable=False
-    )
-    email = db.Column(
-        db.String(100),
-        unique=True,
-        nullable=False,
-    )
-    reviews = db.relationship(
-        "Review", backref="user", lazy=True
-    )
-    is_active = db.Column(db.Boolean, default=True)
-
+    username = db.Column(db.String(100), nullable=False, unique = True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(512), nullable=False, unique=False) #512 caracteres, 100 es poco para guardar contraseñas hash/encriptada
+    is_active = db.Column(db.Boolean, default=True) #para eliminar cuentas pero que se guarden en bd
+    def __str__(self):
+        return self.username
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -82,7 +74,7 @@ class UserCredentials(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey("users.id"),
+        db.ForeignKey("user.id"),
         unique=True,
         nullable=False
     )

@@ -2,15 +2,15 @@ from app import db
 
 from marshmallow import Schema, fields
 
-from models import User, Review
+from models import User
 
-class ReviewSchema(Schema):
+""" class ReviewSchema(Schema):
     id = fields.Int(dump_only=True)
     user_id = fields.Int()
     comment = fields.Str(allow_none=True)
     date = fields.Date(allow_none=True)
     user = fields.Nested("UserSchema", only=["name"], dump_only=True)
-
+"""
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     name = fields.Str(required=True)
