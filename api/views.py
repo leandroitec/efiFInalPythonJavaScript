@@ -11,7 +11,7 @@ from passlib.hash import bcrypt
 
 from app import db
 from models import User, UserCredentials
-from schemas import UserSchema, RegisterSchema, LoginSchema
+from api.schemas import UserSchema, RegisterSchema, LoginSchema
 
 from datetime import datetime, timedelta
 from functools import wraps

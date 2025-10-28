@@ -10,4 +10,3 @@ INSTRUCCIONES PRIMERA VEZ
     3. Instalar la paqueteria de pyproyect.tolm con (& uv sync).
     4. Verificar en app.py la conexion a la base de datos local. 
     5. Correr el proyecto (& uv Flask run --reload)
-

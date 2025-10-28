@@ -21,63 +21,7 @@ class User(db.Model):
     )
     is_active = db.Column(db.Boolean, default=True)
 
-'''
-class Movie(db.Model):
-    __tablename__ = "movies"
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(
-        db.String(200), nullable=False
-    )
-    year = db.Column(db.Integer, nullable=False)
-    genres = db.relationship(
-        "Genre",
-        secondary="movie_genre",
-        backref="movies",
-    )
-    reviews = db.relationship(
-        "Review", backref="movie", lazy=True
-    )
 
-
-class Genre(db.Model):
-    __tablename__ = "genres"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(
-        db.String(50), nullable=False
-    )
-
-
-class MovieGenre(db.Model):
-    __tablename__ = "movie_genre"
-    movie_id = db.Column(
-        db.Integer,
-        db.ForeignKey("movies.id"),
-        primary_key=True,
-    )
-    genre_id = db.Column(
-        db.Integer,
-        db.ForeignKey("genres.id"),
-        primary_key=True,
-    )
-
-
-class Review(db.Model):
-    __tablename__ = "reviews"
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(
-        db.Integer,
-        db.ForeignKey("users.id"),
-        nullable=False,
-    )
-    movie_id = db.Column(
-        db.Integer,
-        db.ForeignKey("movies.id"),
-        nullable=False,
-    )
-    rating = db.Column(db.Integer, nullable=False)
-    comment = db.Column(db.Text)
-    date = db.Column(db.Date)
-'''
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
@@ -147,3 +91,4 @@ class UserCredentials(db.Model):
     user = db.relationship(
         "User", backref=db.backref("credential", uselist=False)
     )
+    
