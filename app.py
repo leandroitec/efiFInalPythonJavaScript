@@ -6,6 +6,9 @@ from models import (
 )
 from flask_migrate import Migrate
 
+from api.schemas import PostSchema
+from api.views import UserAPI, UserDetailAPI, UserRegisterAPI, AuthLoginAPI
+
 app = Flask(__name__)
 #cambiar esto si tenes usuario y contraseña, //usuario:contraseña@host:@localhost/pyIIefi_db"
 app.config['SQLALCHEMY_DATABASE_URI'] = (
@@ -29,14 +32,17 @@ app.add_url_rule(
     view_func=UserDetailAPI.as_view('user_detail_api'),
     methods=['GET', 'PUT', 'PATCH', 'DELETE']
 )
-app.add_url_rule(
-    '/register',
-    view_func=UserRegisterAPI.as_view('user_register_api'),
-    methods=['POST']
-)
+"""
+
 app.add_url_rule(
     '/login',
     view_func=AuthLoginAPI.as_view('user_user_api'),
+    methods=['POST']
+)
+
+app.add_url_rule(
+    '/register',
+    view_func=UserRegisterAPI.as_view('user_register_api'),
     methods=['POST']
 )
 
@@ -44,4 +50,3 @@ app.add_url_rule(
 if __name__ == '__main__':
     app.run(debug=True)
 
-"""
